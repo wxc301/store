@@ -24,39 +24,41 @@
 '''
 # 1.让系统随机产生一个随机数
 import random
-num = random.randint(0,1000)
-count = 0
 gold = 5000
-print("你的金币数是：",gold)
+def go(gold):
+    num = random.randint(0,1000)
+    count = 0
+    print("你的金币数是：",gold)
 # 只允许让用户输入20次
-i = 1
-while i <= 10:
-    count = count + 1
+    i = 1
+    while i <= 10:
+        count = count + 1
     # 2. 让用户数据
-    chose = input("请输入本次猜的数字：") # "123"  --> 123
-    chose = int(chose)
+        chose = input("请输入本次猜的数字：") # "123"  --> 123
+        chose = int(chose)
     # 3.判断是否猜中
-    if chose > num:
-        print("大了！")
-        gold -= 500
-        print("你的金币数是：",gold)
-    elif chose < num:
-        print("小了！")
-        gold -= 500
-        print("你的金币数是：",gold)
-    else:
-        print("恭喜，本次猜中，本次幸运数字为：",num,"，本次猜了",count,"次")
-
-        gold += 10000
-        print("你的金币数是：", gold)
-        go = input("是否继续猜测：（是/否）")
-        if go == "是":
-            i = 0
-        elif go == "否":
-            break
+        if chose > num:
+            print("大了！")
+            gold -= 500
+            print("你的金币数是：",gold)
+        elif chose < num:
+            print("小了！")
+            gold -= 500
+            print("你的金币数是：",gold)
         else:
-            print("输入非法！")
-    i = i + 1
+            print("恭喜，本次猜中，本次幸运数字为：",num,"，本次猜了",count,"次")
+
+            gold += 10000
+            print("你的金币数是：", gold)
+            go1 = input("是否继续猜测：（是/否）")
+            if go1 == "是":
+                go(gold)
+            elif go1 == "否":
+                break
+            else:
+                print("输入非法！")
+        i = i + 1
+go(gold)
 
 
 
